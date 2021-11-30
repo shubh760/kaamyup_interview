@@ -24,10 +24,12 @@ class _ProfileState extends State<Profile> {
         .doc(_auth.currentUser!.uid)
         .get()
         .then((DocumentSnapshot ds) {
-      imgurl = ds["imageurl"];
+      setState(() {
+        imgurl = ds["imageurl"];
       name = ds["name"];
       number = ds["Phone num"];
       email = ds["email"];
+      });
     });
   }
 
@@ -82,7 +84,7 @@ class _ProfileState extends State<Profile> {
                   alignment: Alignment.center,
                   child: CircleAvatar(
                     radius: 100,
-                    backgroundImage: NetworkImage(imgurl),
+                    backgroundImage: NetworkImage('${imgurl}'),
                   ),
                 ),
               ]),
@@ -98,7 +100,7 @@ class _ProfileState extends State<Profile> {
                 child: ListTile(
                   leading: Icon(Icons.person),
                   title: Text(
-                    "$name",
+                    "${name}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -113,7 +115,7 @@ class _ProfileState extends State<Profile> {
                 child: ListTile(
                   leading: Icon(Icons.email),
                   title: Text(
-                    "$email",
+                    "${email}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -128,7 +130,7 @@ class _ProfileState extends State<Profile> {
                 child: ListTile(
                   leading: Icon(Icons.phone),
                   title: Text(
-                    "$number",
+                    "${number}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
