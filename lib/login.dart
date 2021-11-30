@@ -185,7 +185,7 @@ class _LoginState extends State<Login> {
                                     if (_user != null) {
                                       setState(() {
                                         isLoading = false;
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
