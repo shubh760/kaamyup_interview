@@ -18,27 +18,32 @@ class _ProfileState extends State<Profile> {
   String email = '';
   Future getimage() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
-    FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    await _firestore
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    await firestore
         .collection('users')
         .doc(_auth.currentUser!.uid)
         .get()
         .then((DocumentSnapshot ds) {
-      setState(() {
+      if(mounted){
+        setState(() {
         imgurl = ds["imageurl"];
-      name = ds["name"];
-      number = ds["Phone num"];
-      email = ds["email"];
+        name = ds["name"];
+        number = ds["Phone num"];
+        email = ds["email"];
       });
+      }
     });
   }
-
+  @override
+  void dispose() {
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     getimage();
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
+      body:imgurl ==null? CircularProgressIndicator(): SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -65,8 +70,13 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               SizedBox(height: 10),
-              Text('User Profile', style: TextStyle(color: Colors.white, fontSize: 30),),
-              SizedBox(height: 30,),
+              Text(
+                'User Profile',
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              SizedBox(
+                height: 30,
+              ),
               Stack(children: [
                 Align(
                   alignment: Alignment.center,
@@ -105,7 +115,9 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -120,7 +132,9 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(

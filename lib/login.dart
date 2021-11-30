@@ -13,9 +13,36 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController emailtext =  TextEditingController();
-  TextEditingController passwordtext =  TextEditingController();
+  TextEditingController emailtext = TextEditingController();
+  TextEditingController passwordtext = TextEditingController();
   bool isLoading = false;
+  void showdialouge() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                title: Text(
+                  "User doesn't exist",
+                  style:
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                ),
+                content: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "ok",
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ));
+          });
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,6 +191,11 @@ class _LoginState extends State<Login> {
                                                 builder: (context) =>
                                                     const BNB()));
                                       });
+                                    } else {
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                      showdialouge();
                                     }
                                   });
                                 }

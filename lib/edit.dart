@@ -20,7 +20,11 @@ class _EditProfileState extends State<EditProfile> {
         .doc(_auth.currentUser!.uid)
         .get()
         .then((DocumentSnapshot ds) {
-      imgurl = ds["imageurl"];
+      if(mounted){
+        setState(() {
+          imgurl = ds["imageurl"];
+        });
+      }
     });
   }
 
@@ -80,7 +84,7 @@ class _EditProfileState extends State<EditProfile> {
                   alignment: Alignment.center,
                   child: CircleAvatar(
                     radius: 50,
-                    backgroundImage: NetworkImage(imgurl),
+                    backgroundImage: NetworkImage('${imgurl}'),
                   ),
                 ),
               ]),
