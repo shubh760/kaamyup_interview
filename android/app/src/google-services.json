@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "966499416800",
+    "project_id": "interview-c128b",
+    "storage_bucket": "interview-c128b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966499416800:android:b3646e023edf85339d2e85",
+        "android_client_info": {
+          "package_name": "com.example.kaamyup_interview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966499416800-s7sru3pn8bmj3vgbvh41d760avhrbcmh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kaamyup_interview",
+            "certificate_hash": "a18afd3b617e9a6cae36bc09be4b03702d53583c"
+          }
+        },
+        {
+          "client_id": "966499416800-lfnt6n5g8ntogd8d669tfu5pfab8eo0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQiXMotCtgvoii85guotHKhe-hmjPgVBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966499416800-lfnt6n5g8ntogd8d669tfu5pfab8eo0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
