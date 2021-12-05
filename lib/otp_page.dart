@@ -97,7 +97,7 @@ class _OtpPageState extends State<OtpPage> {
                 GestureDetector(
                   onTap: () {
                     authclass.signinWithPhone(
-                        verificationID, smscode, phonecontroller, context);
+                        verificationID, smscode, phonecontroller.text, context);
                   },
                   child: Container(
                       child: Text(

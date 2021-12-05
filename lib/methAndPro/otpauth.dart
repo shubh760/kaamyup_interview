@@ -39,7 +39,7 @@ class Authclass {
   }
 
   Future<void> signinWithPhone(String verificationid, String smsCode,
-      TextEditingController controller, BuildContext context) async {
+      String controller, BuildContext context) async {
     try {
       FirebaseFirestore _firestore = FirebaseFirestore.instance;
       AuthCredential credential = PhoneAuthProvider.credential(
@@ -48,7 +48,7 @@ class Authclass {
       await _firestore
           .collection('users')
           .doc(_auth.currentUser!.uid)
-          .set({"Phone num": controller.toString()}, SetOptions(merge: true));
+          .set({"Phone num": controller}, SetOptions(merge: true));
 
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => ImagePick()));
